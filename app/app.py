@@ -271,7 +271,7 @@ def clean_querystring(request_args, *keys_to_remove, **new_values):
 
 @app.errorhandler(404)
 def not_found(exc):
-	return Response("<h3>Not found</h3>"), 404
+	return Response("<h3>Not FOUND</h3>"), 404
 
 
 

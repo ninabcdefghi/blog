@@ -174,16 +174,12 @@ def index():
 
 
 
-'''added later, needs to be before detail'''
 @app.route("/create/", methods=["GET", "POST"])
 @login_required
 def create():
 	if request.method == "POST":
 		if request.form.get("title") and request.form.get("content"):
-			entry = Entry.create(
-				title=request.form["title"],
-				content=request.form["content"],
-				published=request.form.get("published") or False)
+			entry = Entry.create(title=request.form["title"], content=request.form["content"], published=request.form.get("published") or False)
 			flash("Entry created successfully.", "success")
 			if entry.published:
 				return redirect(url_for("detail", slug=entry.slug))
@@ -281,3 +277,6 @@ def main():
 
 if __name__ == "__main__":
 	main()
+
+
+# https://github.com/coleifer/peewee/tree/master/examples/blog/templates
